@@ -1,0 +1,274 @@
+/* teu CSS original com pequenos ajustes para pause overlay e inputs */
+
+html{ /*Ajuste geral da página*/
+  background: #011b21;
+  width: 100%;
+  max-width: 100%;
+  height:100%;
+}
+
+#instructions, #gameover {
+  width: 50%;
+  max-width: 300px;
+  max-height: 50vh;
+  margin: auto; /* Garante que o pop-upp dique no centro da tela */
+  border: none;
+  border-radius: 8px;
+  background: #001A26;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+}
+
+#instructions h2, #gameover h2 {
+  font-size: 22px;
+  color: #00FFAA;
+}
+
+#instructions p, #gameover p {
+  font-size: 16px;
+  color: #00FFAA;
+}
+
+#instructions img{
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+#paused-text{
+  display:none;
+  color:#fff;
+  font-size:24px;
+  text-align:center;
+  margin-top:10px;
+}
+
+#instructions * {
+  color: #00FFAA;
+}
+
+#instructions::backdrop {
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+}
+
+#gameover {
+  color: #00FFAA;
+}
+
+#gameover::backdrop {
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+}
+
+hr{
+  background-color: #bfdae0;
+  height: 1px;
+}
+
+main{
+  margin-top: 30px;
+}
+
+header{
+  color: #bfdae0;
+  background: #011b21;
+  margin-left: 10px;
+  margin-right: 10px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:8px 10px;
+}
+
+.titlename{
+  margin-bottom: 5px;
+  margin-top: -10px;
+  margin-left: 0;
+  font-size:24px;
+}
+
+nav{
+  text-align: center;
+}
+
+a{
+  text-decoration: none;
+  color: #bfdae0;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+button{
+  border-radius: 30px;
+  height: 46px;
+  width: auto;
+  min-width: 100px;
+  font-size: 16px;
+  background: #02262e;
+  color: #efe027;
+  border-color: #efe027;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 8px 14px;
+}
+
+p{
+  color: #bfdae0;
+  font-size: 16px;
+}
+
+.imgandbut{
+  text-align: center;
+}
+
+.logogame{
+  width: 350px;
+  height: 350px;
+  border-radius: 25px;
+  border: double #efe027;
+  border-width: 7px;
+}
+
+.logotop{
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  margin-top: 10px;
+}
+
+#gamegeopuzz{ /*Ajuste da div principal do conjunto que compoe o jogo*/
+  display: flex;
+  justify-content: center;
+  margin: 20px auto;
+  max-width: 900px; /* Limite máximo para telas grandes */
+  gap: 10px; /* Espaçamento entre os elementos */
+}
+
+#canvanext{ /*Ajuste para colocar a posição correta do canva de próxima peça*/
+  /* Removido ajuste de posição, o flexbox deve centralizar */
+}
+
+#linescoregeopuzz{ /*Ajustes do mostrador de pontos e linhas */
+  color: #efe027;
+  text-align: center;
+  background: #024657;
+  border: double #efe027;
+  border-width: 7px;
+  border-radius: 20px;
+  width: 180px; /* Largura fixa para os painéis laterais */
+  height: 260px;
+  padding: 10px;
+}
+
+#backgroundgeopuzz{ /*Ajustes do mostrador do jogo */
+  color: #efe027;
+  text-align: center;
+  background: #024657;
+  border: double #efe027;
+  border-width: 7px;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+#nextgeopuzz{ /*Ajustes do mostrador da próxima peça */
+  color: #efe027;
+  text-align: center;
+  background: #024657;
+  border: double #efe027;
+  border-width: 7px;
+  border-radius: 20px;
+  width: 180px; /* Largura fixa para os painéis laterais */
+  height: 260px;
+  padding: 10px;
+}
+
+/* Pause overlay */
+.pause-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(1, 27, 33, 0.85);
+  z-index: 200;
+}
+
+.pause-card {
+  background: #012e36;
+  color: #efe027;
+  padding: 20px;
+  border-radius: 12px;
+  border: 2px solid #efe027;
+  text-align: center;
+  width: 320px;
+}
+
+.pause-card a {
+  color: #60ffd1;
+  text-decoration: none;
+}
+
+/* responsive */
+@media (max-width: 768px) {
+  #gamegeopuzz {
+    flex-direction: column; /* Empilha os elementos em telas menores */
+    align-items: center;
+  }
+
+  #linescoregeopuzz, #nextgeopuzz {
+    width: 90%; /* Ocupa a maior parte da largura */
+    max-width: 300px; /* Limite para não ficar muito largo */
+    height: auto; /* Altura automática */
+    margin: 10px 0;
+  }
+  
+  #backgroundgeopuzz {
+    /* As dimensões do canvas serão definidas no HTML para evitar conflito com o JS */
+  }
+}
+
+
+/* --- NOVOS ESTILOS ADICIONADOS --- */
+
+/* Estilos para Botões do HUD (Pause e Config) */
+.hud-btn {
+  margin-left: 8px; /* Adiciona espaço entre os botões */
+}
+
+/* Estilos para o Pop-up de Configurações */
+.settings-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 15px 0;
+  color: #efe027; /* Cor do texto do label */
+}
+
+.settings-group label {
+  font-size: 16px;
+  margin-right: 10px;
+  white-space: nowrap;
+}
+
+.settings-group input[type="range"] {
+  flex-grow: 1;
+  cursor: pointer;
+}
+
+.settings-group input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.settings-group #volume-value {
+    min-width: 40px;
+    text-align: right;
+}
+
+/* Ajusta a cor dos links dentro do card de settings (igual ao pause) */
+#settings-overlay .pause-card a {
+  color: #60ffd1;
+  text-decoration: none;
+}

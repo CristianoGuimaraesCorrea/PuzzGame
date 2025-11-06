@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title> <link rel="stylesheet" href="styles.css" /> <link rel="icon" href="https://uploads.onecompiler.io/43s2gpp6m/43stpacxc/1000116022.png" type="image/x-icon"> </head>
+<body>
+    <header> <img class="logotop" src="https://uploads.onecompiler.io/43s2gpp6m/43stpacxc/1000116022.png" alt="logo"> <h1 class="titlename">Geometry Puzzle</h1> </header> <dialog id="instructions">
+        <h2> Como jogar: </h2>
+        <img src="https://uploads.onecompiler.io/43s2gpp6m/43u6znhkn/Setas.png" alt="setas">
+        <p> Use as setas do teclado para controlar as peças que cairam no bloco. </p>
+        <button id="close" onclick="unlockAudio()"> Close </button>
+      </dialog>
+      
+      <dialog id="gameover"> 
+        <h2>GAME OVER</h2>
+        <p>Tempo total: <span id="final-time">00:00</span></p>
+        <p>Sua pontuação final foi: <span id="final-score">0</span></p>
+
+        <div id="new-record-block" style="display:none; margin-top:10px;">
+          <p>🎉 Novo recorde! Digite seu nome:</p>
+          <input id="new-record-name" placeholder="Seu nome" maxlength="20" />
+          <button id="save-record-btn">Salvar recorde</button>
+        </div>
+
+        <div style="margin-top:12px;">
+          <button id="replay-btn" onclick="unlockAudio()">Jogar Novamente</button>
+        </div>
+      </dialog>
+
+    <main>
+      <hr> <nav> <a href="index.html">Voltar para o Início</a> </nav> <hr> <div style="display:flex; justify-content:space-between; align-items:center; max-width:900px; margin: 0 auto 10px;">
+        <p>Tempo: <span id="tempo">00:00</span></p>
+        <div>
+          <button id="settings-btn" class="hud-btn">⚙️ Config.</button>
+          <button id="pause-btn" class="hud-btn">⏸ Pausar</button>
+        </div>
+      </div>
+
+      <div id="gamegeopuzz"> <div id="linescoregeopuzz"> <h1>Pontos:</h1>
+          <p id="score">0</p> <br>
+          
+          <h1>Linhas:</h1>
+          <p id="linhas">0</p> <br>
+
+          <h1>Recorde:</h1>
+          <p id="record-display">- (<span id="record-name">-</span>)</p>
+        </div>
+      
+        <div id="backgroundgeopuzz"> <h1>jogo:</h1>
+          <canvas id="game" width="300" height="600"></canvas> </div>
+      
+        <div id="nextgeopuzz"> <h1>Next:</h1>
+          <canvas id="canvanext" width="100" height="100"></canvas> </div>
+      </div>
+      
+      <div style="text-align:center; margin-top:10px;">
+        <button onclick="location.reload();">Reiniciar</button> </div>
+    </main>
+
+    <div id="pause-overlay" class="pause-overlay" style="display:none;">
+      <div class="pause-card">
+        <h2>Jogo Pausado ⏸</h2>
+        <p>Desenvolvido por:</p>
+        <p style="margin:10px 0;">
+          <a href="https://github.com/0001137700-star" target="_blank" rel="noopener noreferrer">Ana Julia</a> <br>
+          <a href="https://github.com/CristianoGuimaraesCorrea" target="_blank" rel="noopener noreferrer">Cristiano Guimarães</a> <br>
+          <a href="https://github.com/jpvieirag20-hub" target="_blank" rel="noopener noreferrer">João Pedro</a> <br>
+          <a href="https://github.com/" target="_blank" rel="noopener noreferrer">Maria Eduarda</a> <br>
+          <a href="https://github.com/AllMakeBO" target="_blank" rel="noopener noreferrer">Moisés Borba</a><br>
+          <a href="https://github.com/0001141332-collab" target="_blank" rel="noopener noreferrer">Nicolas de Morais</a>
+        </p>
+	        <button id="resume-btn" onclick="unlockAudio()">▶ Continuar</button>
+      </div>
+    </div>
+
+    <div id="settings-overlay" class="pause-overlay" style="display:none;">
+      <div class="pause-card">
+        <h2>Configurações ⚙️</h2>
+        
+        <div class="settings-group">
+          <label for="volume-slider">Volume:</label>
+          <input type="range" id="volume-slider" min="0" max="1" step="0.1" value="0.5">
+          <span id="volume-value">50%</span>
+        </div>
+        
+        <div class="settings-group">
+          <input type="checkbox" id="mute-checkbox">
+          <label for="mute-checkbox">Mudo</label>
+        </div>
+        
+        <hr style="margin: 20px 0;">
+
+        <p>Desenvolvido por:</p>
+        <p style="margin:10px 0;">
+          <a href="https://github.com/0001137700-star" target="_blank" rel="noopener noreferrer">Ana Julia</a> <br>
+          <a href="https://github.com/CristianoGuimaraesCorrea" target="_blank" rel="noopener noreferrer">Cristiano Guimarães</a> <br>
+          <a href="https://github.com/jpvieirag20-hub" target="_blank" rel="noopener noreferrer">João Pedro</a> <br>
+          <a href="https://github.com/" target="_blank" rel="noopener noreferrer">Maria Eduarda</a> <br>
+          <a href="https://github.com/AllMakeBO" target="_blank" rel="noopener noreferrer">Moisés Borba</a><br>
+          <a href="https://github.com/0001141332-collab" target="_blank" rel="noopener noreferrer">Nicolas de Morais</a>
+        </p>
+	        <button id="close-settings-btn" onclick="unlockAudio()">✔️ Fechar</button>
+      </div>
+    </div>
+    
+    <audio id="bg-music" src="soundtrack.mp3" loop preload="auto"></audio>
+    <audio id="line-clear-sound" src="line_clear.mp3" preload="auto"></audio>
+    <audio id="game-over-sound" src="game-over.mp3" preload="auto"></audio>
+    
+    <script src="script.js"></script>
+
+
+</body>
+</html>

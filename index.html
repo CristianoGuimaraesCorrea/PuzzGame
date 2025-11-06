@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometry Puzzle Project</title> <!--Título do site-->
+    
+    <link rel="stylesheet" href="styles.css" /> <!--Referência ao estilo CSS-->
+    <link rel="icon" href="https://uploads.onecompiler.io/43s2gpp6m/43stpacxc/1000116022.png" type="image/x-icon"> <!--Logo da página (a mesma do projeto)-->
+</head>
+<body>
+      <header> <!--Início do cabeçalho da página-->
+        <img class="logotop" src="https://uploads.onecompiler.io/43s2gpp6m/43stpacxc/1000116022.png"><!--Logo do projeto (mesma logo da página)--> 
+        <h1 class="titlename">Projeto final de desenvolvimento</h1> <!--Título da página mostrado ao usuário-->
+      </header> <!--Fim do cabeçalho da página-->
+    
+      <dialog id="instructions">
+        <h2> Título do Pop-up </h2>
+        <img src="img.jpg">
+        <p> Este é um texto de exemplo dentro do pop-up. </p>
+        <button id="close" onclick="unlockAudio()"> Close </button>
+      </dialog>
+      
+    <main> <!--Início da parte do meio da página-->
+    <hr> <!--Linha de separação do cabeçalho e parte principal do site-->
+    
+    <div class="imgandbut"> <!--Divisória para inserção da logo e botão de direcionamento do game!-->
+      <p>Entre no universo onde há diversão sem limites.<br> 
+      Jogue, desafie e conquiste no Geometry Puzzle!</p>
+      
+      <img class="logogame" src="https://uploads.onecompiler.io/43s2gpp6m/43u6znhkn/PuzGame%20LOGO.png"> <!--Logo do game! ;-;-->
+      <br> <!--Quebra de linha entre a logo do Game e botão de redirecionamento.--> 
+      
+      <a href="puzgame.html"> <!--Link de redirecionamento para a página do jogo "puzgame.html".-->
+        <button>Jogar</button> <!--Botão para interação do usuário-->
+      </a><!--Fechamento da tag link (a). É fechado aqui para atribuir o link ao botão.-->
+    </div>
+    </main> <!--Fim da parte do meio da página-->
+    
+    <audio id="bg-music" src="bg_music.mp3" loop preload="auto"></audio>
+    <script src="script.js"></script>
+</body>
+</html>
